@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Sekolah</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .banner {
+            background: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b');
+            background-size: cover;
+            color: white;
+            padding: 100px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            display: none;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SMK MAJU JAYA</h1>
+    <nav>
+        <a onclick="showPage('beranda')">Beranda</a>
+        <a onclick="showPage('tentang')">Tentang</a>
+        <a onclick="showPage('guru')">Guru</a>
+        <a onclick="showPage('kontak')">Kontak</a>
+    </nav>
+</header>
+
+<section class="banner">
+    <h2>Selamat Datang di Website Sekolah</h2>
+    <p>Sekolah Unggulan dan Berprestasi</p>
+</section>
+
+<section id="beranda" class="content active">
+    <h2>Berita Sekolah</h2>
+    <p id="berita"></p>
+</section>
+
+<section id="tentang" class="content">
+    <h2>Tentang Sekolah</h2>
+    <p>Sekolah ini berdiri tahun 2010 dan memiliki jurusan RPL, TKJ, dan AKL.</p>
+</section>
+
+<section id="guru" class="content">
+    <h2>Data Guru</h2>
+    <ul>
+        <li>Bapak Andi - RPL</li>
+        <li>Ibu Siti - AKL</li>
+        <li>Bapak Rudi - TKJ</li>
+    </ul>
+</section>
+
+<section id="kontak" class="content">
+    <h2>Kontak Kami</h2>
+    <form onsubmit="kirimPesan(event)">
+        <input type="text" placeholder="Nama" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Pesan" required></textarea>
+        <button type="submit">Kirim</button>
+    </form>
+    <p id="status"></p>
+</section>
+
+<footer>
+    <p>© 2026 SMK Maju Jaya</p>
+</footer>
+
+<script>
+    function showPage(page) {
+        let pages = document.querySelectorAll('.content');
+        pages.forEach(p => p.classList.remove('active'));
+        document.getElementById(page).classList.add('active');
+    }
+
+    document.getElementById("berita").innerHTML =
+    "Ujian sekolah akan dilaksanakan bulan depan. Siswa diharapkan belajar dengan giat.";
+
+    function kirimPesan(event) {
+        event.preventDefault();
+        document.getElementById("status").innerHTML = "Pesan berhasil dikirim!";
+    }
+</script>
+
+</body>
+</html>
